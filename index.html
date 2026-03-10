@@ -5136,14 +5136,14 @@
 
     const gameLogics = {
         playWhe: () => [getRandom(1, 36)],
-        pick2: () => [getRandom(0, 9), getRandom(0, 9)],
+        pick2: () => [getRandom(1, 36), getRandom(1, 36)],
         pick4: () => [getRandom(0, 9), getRandom(0, 9), getRandom(0, 9), getRandom(0, 9)],
         cashPot: () => getUniqueSet(5, 20),
         lottoPlus: () => {
             return { main: getUniqueSet(5, 35), special: getRandom(1, 10), label: 'PB' };
         },
         winForLife: () => {
-            return { main: getUniqueSet(6, 28), special: getRandom(1, 4), label: 'CB' };
+            return { main: getUniqueSet(6, 28), special: getRandom(1, 3), label: 'CB' };
         }
     };
 
