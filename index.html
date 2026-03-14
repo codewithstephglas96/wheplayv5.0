@@ -1558,7 +1558,94 @@
         }
       }
 
-            /* Chart 1/8 Styles - Matching the 6x6 grid from image */
+    /* RAKE Chart Styles */
+    .chart-rake {
+        background-color: #0f172a;
+        border: 2px solid #ffd700;
+        border-radius: 16px;
+        margin-top: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(255, 215, 0, 0.2);
+    }
+
+    .chart-rake-header {
+        background: linear-gradient(145deg, #ffd700, #ffaa00);
+        color: #000;
+        padding: 12px;
+        font-weight: 900;
+        text-align: center;
+        font-size: 24px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #b8860b;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .rake-grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        background: #ffd700;
+        padding: 2px;
+    }
+
+    .rake-column {
+        background: #1e293b;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .rake-item {
+        display: flex;
+        align-items: baseline;
+        padding: 6px 10px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 6px;
+        border-left: 3px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .rake-item:hover {
+        background: rgba(255, 215, 0, 0.1);
+        border-left-color: #ffd700;
+        transform: translateX(2px);
+    }
+
+    .rake-numbers {
+        min-width: 70px;
+        font-weight: 900;
+        color: #ffd700;
+        font-size: 13px;
+        font-family: monospace;
+    }
+
+    .rake-name {
+        flex: 1;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+        .rake-grid-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .rake-numbers {
+            min-width: 60px;
+            font-size: 12px;
+        }
+        
+        .rake-name {
+            font-size: 11px;
+        }
+    }
+
+    /* Chart 1/8 Styles - Matching the 6x6 grid from image */
     .chart-8 {
         background-color: #2d8a44; /* Match the green from 1/16 chart */
         border: 5px solid #5d4037; /* Bamboo brown border */
@@ -3705,6 +3792,111 @@
         36: [1, 25],
       };
 
+    // 1/8 Chart data - 6x6 grid of number pairs
+    const oneEightChart = [
+        // Row 1
+        { main: 1, pair: "8-25" },
+        { main: 2, pair: "9-26" },
+        { main: 3, pair: "10-27" },
+        { main: 4, pair: "11-28" },
+        { main: 5, pair: "12-29" },
+        { main: 6, pair: "13-30" },
+        // Row 2
+        { main: 7, pair: "14-31" },
+        { main: 8, pair: "15-32" },
+        { main: 9, pair: "16-33" },
+        { main: 10, pair: "17-34" },
+        { main: 11, pair: "18-35" },
+        { main: 12, pair: "19-36" },
+        // Row 3
+        { main: 13, pair: "20-1" },
+        { main: 14, pair: "21-2" },
+        { main: 15, pair: "22-3" },
+        { main: 16, pair: "23-4" },
+        { main: 17, pair: "24-5" },
+        { main: 18, pair: "25-6" },
+        // Row 4
+        { main: 19, pair: "26-7" },
+        { main: 20, pair: "27-8" },
+        { main: 21, pair: "28-9" },
+        { main: 22, pair: "29-10" },
+        { main: 23, pair: "30-11" },
+        { main: 24, pair: "31-12" },
+        // Row 5
+        { main: 25, pair: "32-13" },
+        { main: 26, pair: "33-14" },
+        { main: 27, pair: "34-15" },
+        { main: 28, pair: "35-16" },
+        { main: 29, pair: "36-17" },
+        { main: 30, pair: "1-18" },
+        // Row 6
+        { main: 31, pair: "2-19" },
+        { main: 32, pair: "3-20" },
+        { main: 33, pair: "4-21" },
+        { main: 34, pair: "5-22" },
+        { main: 35, pair: "6-23" },
+        { main: 36, pair: "7-24" }
+    ];
+    
+    // ========== RAKE CHART DATA ==========
+    const rakeChartData = {
+        leftColumn: [
+            { numbers: "1+36", name: "FIRST + LAST" },
+            { numbers: "2+16", name: "OLD JAMETTE" },
+            { numbers: "3+34-22", name: " 3 BLIND MICE" },
+            { numbers: "3+35", name: "CARRIAGE ON ROAD" },
+            { numbers: "4+32", name: "DEAD WOOD" },
+            { numbers: "4+21", name: "DEAD IN HOLE" },
+            { numbers: "4+26", name: "CROWD FROM DEAD" },
+            { numbers: "5+31", name: "PARSON MAN + WIFE" },
+            { numbers: "6+25", name: "BACK + BELLY" },
+            { numbers: "7+21", name: "HOG MOUTH" },
+            { numbers: "8+3", name: "TIGER IN CAGE" },
+            { numbers: "8+33", name: "LION IN NET" },
+            { numbers: "8+7", name: "TIGER HUNTING" },
+            { numbers: "9+32", name: "BULL PISTOLE" },
+            { numbers: "10+32", name: "MONKEY SHRIMPS" },
+            { numbers: "10+27", name: "MONKEY ON VINE" },
+            { numbers: "11+17", name: "BLACK + WHITE" },
+            { numbers: "12+10", name: "KING KONG" },
+            { numbers: "12+9", name: "CLEAR / DIRTY WATER" },
+            { numbers: "12+1", name: "KING + I" },
+            { numbers: "13+10", name: "GIRL + BOY CHILD" },
+            { numbers: "14+6", name: "MONEY IN POCKET" },
+            { numbers: "14+23", name: "MONEY IN BANK" },
+            { numbers: "15+20", name: "SICK LIKE A DOG" },
+            { numbers: "16+23", name: "JAMETTE IN HOTEL" }
+        ],
+        rightColumn: [
+            { numbers: "17+29", name: "YOUNG DRUNK" },
+            { numbers: "18+29", name: "ROCK D BOAT" },
+            { numbers: "19+35", name: "HORSE ON TRACK" },
+            { numbers: "20+5", name: "WORM ON LOG" },
+            { numbers: "21+19", name: "FROM HORSE'S MOUTH" },
+            { numbers: "22+24", name: "RAT LOOKING FOR GOLD" },
+            { numbers: "23+31", name: "HOUSE WIFE" },
+            { numbers: "24+21", name: "FOOD IN MOUTH" },
+            { numbers: "25+13", name: "HARD + SOFT BACK" },
+            { numbers: "26+15", name: "FOWL + SICKNESS" },
+            { numbers: "27+35", name: "BIG + SMALL SNAKE" },
+            { numbers: "28+36", name: "FISH IN SEA" },
+            { numbers: "28+6", name: "FISH GUTS" },
+            { numbers: "29+6", name: "RUM BELLY" },
+            { numbers: "29+13", name: "DRUNK + SPREAD OUT" },
+            { numbers: "29+1", name: "RUM BOTTLE" },
+            { numbers: "30+35", name: "GOLDEN COBRA" },
+            { numbers: "30+6", name: "GOLD SACK" },
+            { numbers: "30+6", name: "CAT IN BAG" },
+            { numbers: "31+16", name: "BIG + SMALL JAMETTE" },
+            { numbers: "32+1", name: "BOTTLE + SPOON" },
+            { numbers: "33+9", name: "COW EATING GRASS" },
+            { numbers: "33+10", name: "SPIDER MONKEY" },
+            { numbers: "34+1", name: "CEMETERY LIGHTS" },
+            { numbers: "35+12", name: "KING COBRA" },
+            { numbers: "36+18", name: "BRIDGE + WATER" }
+        ]
+    };
+
       // ========== GLOBAL VARIABLES ==========
       let timeline = [];
       let markInfo = {};
@@ -5635,6 +5827,15 @@
         marksContainer.appendChild(rightColumn);
         mainContainer.appendChild(marksContainer);
 
+        // Add 1/8 Chart (6x6 grid)
+        const chart8 = document.createElement("div");
+        chart8.className = "chart-8";
+        chart8.innerHTML = `
+        <div class="chart-8-header">THE 1/8 CHART</div>
+        <div id="grid-8-content" class="grid-8"></div>
+        `;
+        mainContainer.appendChild(chart8);
+
         // Add 1/16 Chart - Clean version like second example
         const chart16 = document.createElement("div");
         chart16.className = "chart-16";
@@ -5644,10 +5845,22 @@
     `;
 
         mainContainer.appendChild(chart16);
+
+        // Add RAKE Chart
+        const chartRake = document.createElement("div");
+        chartRake.id = "rake-chart-content";
+        mainContainer.appendChild(chartRake);
+
         container.appendChild(mainContainer);
+
+        // Render 1/8 chart
+        renderEightChart();
 
         // Render 1/16 chart
         renderSixteenChart();
+
+        // Render RAKE chart
+        renderRakeChart();
       }
 
     // ========== RENDER 1/16 CHART (Using sixteenGroups) ==========
@@ -5721,6 +5934,98 @@
         if (data) {
             showNotification(`${num} • ${data.name} | Spirit: ${data.spirit} | Partner: ${data.partner} | Mirror: ${data.mirror}`, 'info');
         }
+    }
+
+    // ========== RENDER 1/8 CHART (6x6 Grid) ==========
+    function renderEightChart() {
+        const container = document.getElementById('grid-8-content');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        // Generate 1/8 chart 6x6 grid
+        oneEightChart.forEach((cell, index) => {
+            const cellDiv = document.createElement('div');
+            cellDiv.className = 'cell-8';
+            cellDiv.setAttribute('onclick', `highlightEightCell(${cell.main})`);
+            cellDiv.setAttribute('data-main', cell.main);
+            
+            cellDiv.innerHTML = `
+                <span class="c8-main">${cell.main}</span>
+                <span class="c8-pair">${cell.pair}</span>
+            `;
+            
+            container.appendChild(cellDiv);
+        });
+    }
+
+    // Highlight function for 1/8 chart
+    function highlightEightCell(mainNum) {
+        // Remove previous highlights
+        document.querySelectorAll('.cell-8').forEach(cell => {
+            cell.style.background = '';
+            cell.style.transform = '';
+        });
+        
+        // Highlight selected cell
+        const selectedCell = document.querySelector(`.cell-8[data-main="${mainNum}"]`);
+        if (selectedCell) {
+            selectedCell.style.background = '#1e5e2e';
+            selectedCell.style.transform = 'scale(1.02)';
+            
+            // Get the pair info
+            const cellData = oneEightChart.find(c => c.main === mainNum);
+            if (cellData) {
+                showNotification(`1/8 Chart: ${mainNum} → ${cellData.pair}`, 'info');
+            }
+        }
+    }
+
+    // ========== RENDER RAKE CHART ==========
+    function renderRakeChart() {
+        const container = document.getElementById('rake-chart-content');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        // Create main chart container
+        const chartRake = document.createElement('div');
+        chartRake.className = 'chart-rake';
+        
+        // Add header
+        chartRake.innerHTML = `
+            <div class="chart-rake-header">RAKE CHART</div>
+            <div class="rake-grid-container">
+                <div class="rake-column" id="rake-left-column"></div>
+                <div class="rake-column" id="rake-right-column"></div>
+            </div>
+        `;
+        
+        container.appendChild(chartRake);
+        
+        // Populate left column
+        const leftColumn = document.getElementById('rake-left-column');
+        rakeChartData.leftColumn.forEach(item => {
+            const rakeItem = document.createElement('div');
+            rakeItem.className = 'rake-item';
+            rakeItem.innerHTML = `
+                <span class="rake-numbers">${item.numbers}</span>
+                <span class="rake-name">${item.name}</span>
+            `;
+            leftColumn.appendChild(rakeItem);
+        });
+        
+        // Populate right column
+        const rightColumn = document.getElementById('rake-right-column');
+        rakeChartData.rightColumn.forEach(item => {
+            const rakeItem = document.createElement('div');
+            rakeItem.className = 'rake-item';
+            rakeItem.innerHTML = `
+                <span class="rake-numbers">${item.numbers}</span>
+                <span class="rake-name">${item.name}</span>
+            `;
+            rightColumn.appendChild(rakeItem);
+        });
     }
 
       // ========== MARK APPEARANCE CHART FUNCTIONS ==========
